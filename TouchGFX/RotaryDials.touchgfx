@@ -10,17 +10,42 @@
             "Name": "tiledImage1",
             "Width": 800,
             "Height": 480,
+            "LockPosition": true,
             "FileName": "BG.png"
           },
           {
             "Type": "CustomContainerInstance",
-            "Name": "dial1",
+            "Name": "dial_regular",
+            "X": 272,
+            "Y": 112,
+            "Width": 256,
+            "Height": 256,
+            "Visible": false,
+            "LockPosition": true,
+            "CustomContainerDefinitionName": "Dial",
+            "Clickable": true
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "dial_full_motion",
             "X": 272,
             "Y": 112,
             "Width": 256,
             "Height": 256,
             "LockPosition": true,
-            "CustomContainerDefinitionName": "Dial",
+            "CustomContainerDefinitionName": "Dial_full_motion",
+            "Clickable": true
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "dial_SnapTo",
+            "X": 272,
+            "Y": 112,
+            "Width": 256,
+            "Height": 256,
+            "Visible": false,
+            "LockPosition": true,
+            "CustomContainerDefinitionName": "Dial_SnapTo",
             "Clickable": true
           }
         ],
@@ -47,17 +72,39 @@
             "CapPrecision": "Butt"
           },
           {
-            "Type": "Line",
-            "Name": "tangent",
-            "X": 64,
-            "Y": 128,
-            "Width": 128,
-            "Height": 128,
-            "StartY": 64.0,
-            "EndX": 128.0,
-            "EndY": 64.0,
-            "LineWidth": 2.0,
-            "LineEndingStyle": "Round"
+            "Type": "SvgImage",
+            "Name": "dial_visual",
+            "X": 77,
+            "Y": 77,
+            "Width": 102,
+            "Height": 102,
+            "Image": "test.svg",
+            "FitImageToSize": true,
+            "ImageHorizontalScale": 1.0,
+            "ImageVerticalScale": 1.0,
+            "RotationCenterX": 51.0,
+            "RotationCenterY": 51.0
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "Dial_full_motion",
+        "Width": 256,
+        "Height": 256,
+        "Components": [
+          {
+            "Type": "Circle",
+            "Name": "dial_rep",
+            "Width": 256,
+            "Height": 256,
+            "Color": {
+              "Red": 255
+            },
+            "CenterX": 128.0,
+            "CenterY": 128.0,
+            "Radius": 64.0,
+            "CapPrecision": "Butt"
           },
           {
             "Type": "SvgImage",
@@ -72,6 +119,89 @@
             "ImageVerticalScale": 1.0,
             "RotationCenterX": 51.0,
             "RotationCenterY": 51.0
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "Dial_SnapTo",
+        "Width": 256,
+        "Height": 256,
+        "Components": [
+          {
+            "Type": "Circle",
+            "Name": "dial_rep",
+            "Width": 256,
+            "Height": 256,
+            "Color": {
+              "Red": 255
+            },
+            "CenterX": 128.0,
+            "CenterY": 128.0,
+            "Radius": 64.0,
+            "CapPrecision": "Butt"
+          },
+          {
+            "Type": "SvgImage",
+            "Name": "dial_visual",
+            "X": 77,
+            "Y": 77,
+            "Width": 102,
+            "Height": 102,
+            "Image": "test.svg",
+            "FitImageToSize": true,
+            "ImageHorizontalScale": 1.0,
+            "ImageVerticalScale": 1.0,
+            "RotationCenterX": 51.0,
+            "RotationCenterY": 51.0
+          },
+          {
+            "Type": "TextArea",
+            "Name": "zero_dialpos",
+            "X": 122,
+            "Y": 38,
+            "Width": 13,
+            "Height": 20,
+            "TextId": "__SingleUse_9SZZ",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 162
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "one_dialpos",
+            "X": 201,
+            "Y": 113,
+            "Width": 13,
+            "Height": 20,
+            "TextId": "__SingleUse_7IES",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "two_dialpos",
+            "X": 122,
+            "Y": 195,
+            "Width": 13,
+            "Height": 20,
+            "TextId": "__SingleUse_LI8K",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "three_dialpos",
+            "X": 36,
+            "Y": 114,
+            "Width": 13,
+            "Height": 20,
+            "TextId": "__SingleUse_2EM7",
+            "TextRotation": "0",
+            "AutoSize": true
           }
         ],
         "Interactions": []

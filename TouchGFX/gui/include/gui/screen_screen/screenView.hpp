@@ -12,10 +12,16 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
     //TT INSERTED CODE!!!!
-    void dialClickHandler(const Dial& d, const ClickEvent& e);
-    virtual void handleDragEvent(const DragEvent& Event);
+    void dialClickHandler(const Dial_full_motion&, const ClickEvent&);
+    void dialClickHandler(const Dial& , const ClickEvent& );
+    void dialClickHandler(const Dial_SnapTo& , const ClickEvent&);
+
+    virtual void handleDragEvent(const DragEvent& );
 protected:
+    Callback<screenView, const Dial_full_motion&, const ClickEvent&> dialFMClickedCallback;
     Callback<screenView, const Dial&, const ClickEvent&> dialClickedCallback;
+    Callback<screenView, const Dial_SnapTo&, const ClickEvent&> dialSTClickedCallback;
+
 };
 
 #endif // SCREENVIEW_HPP

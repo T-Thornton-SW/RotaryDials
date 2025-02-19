@@ -1,4 +1,4 @@
-#include <gui/containers/Dial.hpp>
+#include <gui/containers/Dial_full_motion.hpp>
 #include <touchgfx/Utils.hpp>
 #include <math.h>
 #define DIAL_RADIUS 	64
@@ -11,14 +11,14 @@
 #define MAX_VAL			360
 #define MIN_VAL			0
 
-Dial::Dial(){ }
+Dial_full_motion::Dial_full_motion(){ }
 
-void Dial::initialize()
+void Dial_full_motion::initialize()
 {
-    DialBase::initialize();
-	Dial::angle = 0;
-	Dial::angle_old = 0;
-	Dial::firstClick = true;
+    Dial_full_motionBase::initialize();
+	Dial_full_motion::angle = 0;
+	Dial_full_motion::angle_old = 0;
+	Dial_full_motion::firstClick = true;
 }
 
 ///<summary>
@@ -26,20 +26,20 @@ void Dial::initialize()
 ///</summary>
 ///<item><param name="x"> x coord of the object</param></item>
 ///<item><param name="y"> y coord of the object</param></item>
-void Dial::setXYCoord(int16_t x, int16_t y)
+void Dial_full_motion::setXYCoord(int16_t x, int16_t y)
 {
 	if(x>=0&&y>=0&&x<WINDOW_PIXELS&&y<WINDOW_PIXELS)
 	{
 		x-=DIAL_CENTRE;	y-=DIAL_CENTRE;
-		touchgfx_printf("Corrected Coords %i %i\tAngle %1.2f\n", x,y,Dial::angle);
+		touchgfx_printf("Corrected Coords %i %i\tAngleB %1.2f\n", x,y,Dial_full_motion::angle);
 		updateAngle(x, y);//get the current angle of user
 		handleClick(x,y);//perform analysis on user click.
 		//update our field data at end
-		if(Dial::isRotating==true)
+		if(Dial_full_motion::isRotating==true)
 		{
-			Dial::x_old = x;
-			Dial::y_old = y;
-			Dial::angle_old = Dial::angle;
+			Dial_full_motion::x_old = x;
+			Dial_full_motion::y_old = y;
+			Dial_full_motion::angle_old = Dial_full_motion::angle;
 		}
 	}
 }
@@ -49,24 +49,24 @@ void Dial::setXYCoord(int16_t x, int16_t y)
 ///</summary>
 ///<item><param name="x"> x coord of the object</param></item>
 ///<item><param name="y"> y coord of the object</param></item>
-void Dial::handleClick(int16_t x,int16_t y)
+void Dial_full_motion::handleClick(int16_t x,int16_t y)
 {
-	if(Dial::isVisible())
+	if(Dial_full_motion::isVisible())
 	{
 		//if it's the first click
-		if(Dial::firstClick==true)
+		if(Dial_full_motion::firstClick==true)
 		{
-			Dial::isRotating=false;
+			Dial_full_motion::isRotating=false;
 			//check if we're in the goldilocks zone
-			if(Dial::isGoldilocks(x,y))
+			if(Dial_full_motion::isGoldilocks(x,y))
 			{
-				Dial::isRotating=true;
+				Dial_full_motion::isRotating=true;
 			}
-			Dial::firstClick=false;
+			Dial_full_motion::firstClick=false;
 		}
-		else if(Dial::isRotating==true)
+		else if(Dial_full_motion::isRotating==true)
 		{
-			Dial::updateDistance(x,y);
+			Dial_full_motion::updateDistance(x,y);
 		}
 	}
 }
@@ -76,37 +76,37 @@ void Dial::handleClick(int16_t x,int16_t y)
 ///</summary>
 ///<item><param name="x"> x coord of the object</param></item>
 ///<item><param name="y"> y coord of the object</param></item>
-void Dial::updateDistance(int16_t x, int16_t y)
+void Dial_full_motion::updateDistance(int16_t x, int16_t y)
 {
-	float step1 = (float)sqrt(pow((double)(x-Dial::x_old),2)+pow((double)(y-Dial::y_old),2));
+	float step1 = (float)sqrt(pow((double)(x-Dial_full_motion::x_old),2)+pow((double)(y-Dial_full_motion::y_old),2));
 	float unitChange = ((step1)*(float)DIAL_CIRC_DEG/(float)DIAL_CIRCUM);
 	//allows us to skip if they're moving it directly back and forth.
-	if(Dial::angle!=Dial::angle_old)
+	if(Dial_full_motion::angle!=Dial_full_motion::angle_old)
 	{
 		//detect if we've gone cc or cw based on cross product
-		if((x*Dial::y_old)-(y*Dial::x_old)>0)
+		if((x*Dial_full_motion::y_old)-(y*Dial_full_motion::x_old)>0)
 		{
 			//we're going counter clockwise
-			Dial::value_ref-=unitChange;
-			if(Dial::value_ref<MIN_VAL)
+			Dial_full_motion::value_ref-=unitChange;
+			if(Dial_full_motion::value_ref<MIN_VAL)
 			{
-				Dial::value_ref=MIN_VAL;
+				Dial_full_motion::value_ref+=MAX_VAL;
 			}
 		}
 		else
 		{
 			//we're going clockwise
-			Dial::value_ref+=unitChange;
-			if(Dial::value_ref>MAX_VAL)
+			Dial_full_motion::value_ref+=unitChange;
+			if(Dial_full_motion::value_ref>MAX_VAL)
 			{
-				Dial::value_ref=MAX_VAL;
+				Dial_full_motion::value_ref-=MAX_VAL;
 			}
 		}
-		Dial::dial_visual.setRotation(Dial::value_ref);
-		Dial::dial_rep.setArc(0, Dial::value_ref);
-		Dial::dial_visual.invalidate();
-		Dial::dial_rep.invalidate();
-		touchgfx_printf("Output value %f with val %f \n%f \n",Dial::value_ref,step1,CONVERTER_VAL);
+		Dial_full_motion::dial_visual.setRotation(Dial_full_motion::value_ref);
+		Dial_full_motion::dial_rep.setArc(0, Dial_full_motion::value_ref);
+		Dial_full_motion::dial_visual.invalidate();
+		Dial_full_motion::dial_rep.invalidate();
+		touchgfx_printf("Output value %f with val %f \n%f \n",Dial_full_motion::value_ref,step1,CONVERTER_VAL);
 	}
 }
 
@@ -118,7 +118,7 @@ void Dial::updateDistance(int16_t x, int16_t y)
 ///<item><param name="y"> y coord of the object</param></item>
 ///</summary>
 ///<returns>Bool value if within acceptable use region.</returns>
-bool Dial::isGoldilocks(int16_t x, int16_t y)
+bool Dial_full_motion::isGoldilocks(int16_t x, int16_t y)
 {
 	bool retval = false;
 	//ensure that it's within the goldilocks zone to start moving the dial around!
@@ -138,7 +138,7 @@ bool Dial::isGoldilocks(int16_t x, int16_t y)
 ///</summary>
 ///<item><param name="x"> x coord of the click</param></item>
 ///<item><param name="y"> y coord of the click</param></item>
-void Dial::updateAngle(int16_t x, int16_t y)
+void Dial_full_motion::updateAngle(int16_t x, int16_t y)
 {
 	//tan(0) = 0 which means that opposite is x axis
 	//derive angle using tan = opp/adj
@@ -146,7 +146,7 @@ void Dial::updateAngle(int16_t x, int16_t y)
 	{
 	case false:
 		//dealing with areas above circle centre
-		Dial::angle = -std::atan((double)(x)/(double)(y));
+		Dial_full_motion::angle = -std::atan((double)(x)/(double)(y));
 		break;
 	default:
 		//dealing with areas on circle centre
@@ -155,27 +155,27 @@ void Dial::updateAngle(int16_t x, int16_t y)
 			//don't update if x is also 0!
 			if(x!=0)
 			{
-				Dial::angle = x>0 ? M_PI_2:-M_PI_2;//if x is right, angle = 90deg, otherwise angle=270deg
+				Dial_full_motion::angle = x>0 ? M_PI_2:-M_PI_2;//if x is right, angle = 90deg, otherwise angle=270deg
 			}
 		}
 		//dealing with areas below circle centre
 		else
 		{
-			Dial::angle = M_PI - std::atan((double)(x)/(double)(y));
+			Dial_full_motion::angle = M_PI - std::atan((double)(x)/(double)(y));
 		}
 		break;
 	}
-	if(Dial::angle<0)
+	if(Dial_full_motion::angle<0)
 	{
-		Dial::angle+=2*M_PI; //I can't be bothered with negative values they're such a bore. Force angles positive.
+		Dial_full_motion::angle+=2*M_PI; //I can't be bothered with negative values they're such a bore. Force angles positive.
 	}
 }
 
 ///<summary>
 ///Reset the Dial for a fresh new click
 ///</summary>
-void Dial::Release()
+void Dial_full_motion::Release()
 {
-	Dial::firstClick = true;
-	Dial::isRotating = false;
+	Dial_full_motion::firstClick = true;
+	Dial_full_motion::isRotating = false;
 }
