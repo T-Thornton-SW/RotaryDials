@@ -1,0 +1,5 @@
+Debug/*
+Drivers/*
+Middlewares/*
+TouchGFX/build/*
+TouchGFX/generated/*
