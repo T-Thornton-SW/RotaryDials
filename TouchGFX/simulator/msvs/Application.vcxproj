@@ -30,6 +30,7 @@
     <ClCompile Include="..\..\generated\gui_generated\src\containers\Dial_full_motionBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\Dial_SnapTo.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\Dial_SnapToBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\Dial_Generic.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -189,6 +190,7 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\Dial_full_motionBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\Dial_SnapTo.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\Dial_SnapToBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\Dial_Generic.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

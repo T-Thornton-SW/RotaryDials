@@ -53,21 +53,22 @@ void Dial::handleClick(int16_t x,int16_t y)
 {
 	if(Dial::isVisible())
 	{
+		//Dial_Generic::handleClick()
 		//if it's the first click
-		if(Dial::firstClick==true)
-		{
-			Dial::isRotating=false;
+		//if(Dial::firstClick==true)
+		//{
+			//Dial::isRotating=false;
 			//check if we're in the goldilocks zone
-			if(Dial::isGoldilocks(x,y))
-			{
-				Dial::isRotating=true;
-			}
-			Dial::firstClick=false;
-		}
-		else if(Dial::isRotating==true)
-		{
-			Dial::updateDistance(x,y);
-		}
+			//if(Dial::isGoldilocks(x,y))
+			//{
+				//Dial::isRotating=true;
+			//}
+			//Dial::firstClick=false;
+		//}
+		//else if(Dial::isRotating==true)
+		//{
+			//Dial::updateDistance(x,y);
+		//}
 	}
 }
 

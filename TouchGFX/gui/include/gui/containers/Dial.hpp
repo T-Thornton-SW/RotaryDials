@@ -1,6 +1,6 @@
 #ifndef DIAL_HPP
 #define DIAL_HPP
-
+#include <gui/containers/Dial_Generic.hpp>
 #include <gui_generated/containers/DialBase.hpp>
 
 class Dial : public DialBase
