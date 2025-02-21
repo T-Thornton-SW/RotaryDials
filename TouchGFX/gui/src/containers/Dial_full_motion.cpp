@@ -40,12 +40,7 @@ void Dial_full_motion::setXYCoord(int16_t x, int16_t y)
 		handleClick(x,y);//perform analysis on user click.
 		touchgfx_printf("Corrected Coords %i %i\tAngleB %1.2f\n", x,y,Dial_full_motion::data.angle);
 		//update our field data at end
-		if(Dial_full_motion::isRotating==true)
-		{
-			Dial_full_motion::x_old = x;
-			Dial_full_motion::y_old = y;
-			Dial_full_motion::angle_old = Dial_full_motion::angle;
-		}
+
 	}
 }
 
