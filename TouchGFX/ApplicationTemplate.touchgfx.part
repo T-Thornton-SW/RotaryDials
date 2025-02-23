@@ -10,13 +10,13 @@
     },
     "AvailableResolutions": [
       {
-        "Width": 800,
+        "Width": 480,
         "Height": 480
       }
     ],
     "PostGenerateTargetCommand": "touchgfx update_project",
     "Family": "STM32U5",
-    "SubFamily": "STM32U5F9/5G9",
+    "SubFamily": "STM32U599/5A9",
     "Platform": "m33",
     "Toolchain": "STM32CubeIDE",
     "ProjectFile": "../RotaryDials.ioc",
@@ -24,7 +24,8 @@
     "OptionalComponents": [
     ],
     "AdditionalFeatures": [
-      "CWRVector"
+      "CWRVector",
+      "VectorFonts"
     ]
   },
   "Version": "4.23.2"

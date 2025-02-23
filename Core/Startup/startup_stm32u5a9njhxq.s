@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file      startup_stm32u5g9xx.s
+  * @file      startup_stm32u5a9xx.s
   * @author    MCD Application Team
-  * @brief     STM32U5G9xx devices vector table GCC toolchain.
+  * @brief     STM32U5A9xx devices vector table GCC toolchain.
   *            This module performs:
   *                - Set the initial SP
   *                - Set the initial PC == Reset_Handler,
@@ -15,7 +15,7 @@
   *******************************************************************************
   * @attention
   *
-  * Copyright (c) 2023 STMicroelectronics.
+  * Copyright (c) 2022 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -281,8 +281,6 @@ g_pfnVectors:
 	.word	LTDC_ER_IRQHandler
 	.word	DSI_IRQHandler
 	.word	DCACHE2_IRQHandler
-	.word	GFXTIM_IRQHandler
-	.word	JPEG_IRQHandler
 
 	.size	g_pfnVectors, .-g_pfnVectors
 
@@ -740,9 +738,3 @@ g_pfnVectors:
 
 	.weak	DCACHE2_IRQHandler
 	.thumb_set DCACHE2_IRQHandler,Default_Handler
-
-	.weak	GFXTIM_IRQHandler
-	.thumb_set GFXTIM_IRQHandler,Default_Handler
-
-	.weak	JPEG_IRQHandler
-	.thumb_set JPEG_IRQHandler,Default_Handler

@@ -3,7 +3,7 @@
     "Screens": [
       {
         "Name": "screen",
-        "CanvasBufferSize": 12000,
+        "CanvasBufferSize": 7200,
         "Components": [
           {
             "Type": "TiledImage",
@@ -16,7 +16,7 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "dial_regular",
-            "X": 272,
+            "X": 112,
             "Y": 112,
             "Width": 256,
             "Height": 256,
@@ -28,7 +28,7 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "dial_full_motion",
-            "X": 272,
+            "X": 112,
             "Y": 112,
             "Width": 256,
             "Height": 256,
@@ -39,7 +39,7 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "dial_SnapTo",
-            "X": 272,
+            "X": 112,
             "Y": 112,
             "Width": 256,
             "Height": 256,
@@ -196,7 +196,7 @@
     ],
     "Name": "MyApplication",
     "Resolution": {
-      "Width": 800,
+      "Width": 480,
       "Height": 480
     },
     "SelectedColorDepth": 24,
@@ -216,7 +216,7 @@
     ],
     "AvailableResolutions": [
       {
-        "Width": 800,
+        "Width": 480,
         "Height": 480
       }
     ],
@@ -238,14 +238,15 @@
     "PortraitSkinY": 0,
     "DisplayOrientation": "Landscape",
     "Family": "STM32U5",
-    "SubFamily": "STM32U5F9/5G9",
+    "SubFamily": "STM32U599/5A9",
     "Toolchain": "STM32CubeIDE",
     "Platform": "m33",
     "ProjectFile": "../RotaryDials.ioc",
     "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
     "OptionalComponents": [],
     "AdditionalFeatures": [
-      "CWRVector"
+      "CWRVector",
+      "VectorFonts"
     ]
   },
   "Version": "4.23.2"
